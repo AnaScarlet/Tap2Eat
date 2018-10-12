@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "656503929353",
+    "firebase_url": "https://tap2eit.firebaseio.com",
+    "project_id": "tap2eit",
+    "storage_bucket": "tap2eit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:656503929353:android:1fb381adfae1f714",
+        "android_client_info": {
+          "package_name": "edu.towson.cosc431.wheeler.tap2eat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "656503929353-b9qmvnk9969savravsms01lef4ada38n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDNBz6vlm3sPc34Jizp6_56EKUUp8ri2d0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
