@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Tap2Eat</string>
+    <string name="to_menu_btn">Order</string>
 </resources>
