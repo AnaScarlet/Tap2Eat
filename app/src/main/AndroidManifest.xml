@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity_home">
-        </activity>
+        <activity android:name=".activity_home"></activity>
         <activity android:name=".activity_menu" />
         <activity android:name=".activity_login">
             <intent-filter>
@@ -19,6 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".menuItem"></activity>
     </application>
 
 </manifest>
