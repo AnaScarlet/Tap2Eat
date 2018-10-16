@@ -20,7 +20,7 @@ class activity_home : AppCompatActivity() {
     private fun launchMenu() {
         intent = Intent()
         intent.component = ComponentName(this, activity_menu::class.java)
-        this.startActivity(intent)
+        startActivity(intent)
     }
 
     private fun populateView() {
