@@ -22,5 +22,12 @@ class activity_menu : AppCompatActivity() {
 
         // 3. set the adapter on the recyclerview
         recyclerView.adapter = MenuItemAdapter(menu)
+
+
+        menu.add(menuItem("Onion Rings", "Blah  Blah Blah"))
+        menu.add(menuItem("Beef Weelington", "Blah  Blah Blah"))
+        menu.add(menuItem("Spaghetti & Meatballs", "Blah  Blah Blah"))
+        menu.add(menuItem("Other Random Foods", "Blah  Blah Blah"))
+        menu.add(menuItem("Cheesecake", "Blah  Blah Blah"))
     }
 }
