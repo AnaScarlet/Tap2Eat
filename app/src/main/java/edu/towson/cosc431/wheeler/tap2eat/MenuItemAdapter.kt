@@ -25,8 +25,10 @@ class MenuItemAdapter(val menu: List<menuItem>) : RecyclerView.Adapter<MenuItemV
         val menuitem = menu.get(position)
 
         // 2. Set the view properties
-        holder.itemView.itemName.text = menuitem.name
-        holder.itemView.itemDescrip.text = menuitem.description
+        holder.itemView.menu_name.text = menuitem.name
+        holder.itemView.menu_description.text = menuitem.description
+        holder.itemView.menu_price.text = menuitem.price
+//        holder.itemView.menu_img.se = menuitem.image
     }
 }
 
