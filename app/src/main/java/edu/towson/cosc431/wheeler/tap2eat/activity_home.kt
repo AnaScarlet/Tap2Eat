@@ -4,7 +4,9 @@ import android.content.ComponentName
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_home.*
+import com.google.firebase.auth.*
 
 class activity_home : AppCompatActivity() {
 
@@ -18,9 +20,17 @@ class activity_home : AppCompatActivity() {
     }
 
     private fun launchMenu() {
-        intent = Intent()
-        intent.component = ComponentName(this, activity_menu::class.java)
-        startActivity(intent)
+
+        val user = FirebaseAuth.getInstance().currentUser
+        if (user != null) {
+            intent = Intent()
+            intent.component = ComponentName(this, activity_menu::class.java)
+            startActivity(intent)
+
+        } else {
+            Toast.makeText(this,"Log in to make an order",Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private fun populateView() {
