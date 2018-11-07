@@ -17,6 +17,27 @@ class activity_home : AppCompatActivity() {
         populateView()
 
         order_button.setOnClickListener{ launchMenu() }
+
+        logoutBtn.setOnClickListener{logout()}
+    }
+
+    private fun logout() {
+
+        val user = FirebaseAuth.getInstance().currentUser
+
+        if(user != null){
+
+        FirebaseAuth.getInstance().signOut();
+
+        intent = Intent()
+        intent.component = ComponentName(this,activity_login::class.java)
+        startActivity(intent)
+
+        }else {
+            
+            intent.component = ComponentName(this,activity_home::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun launchMenu() {
@@ -29,6 +50,8 @@ class activity_home : AppCompatActivity() {
 
         } else {
             Toast.makeText(this,"Log in to make an order",Toast.LENGTH_SHORT).show();
+            intent.component = ComponentName(this,activity_login::class.java)
+            startActivity(intent)
         }
 
     }

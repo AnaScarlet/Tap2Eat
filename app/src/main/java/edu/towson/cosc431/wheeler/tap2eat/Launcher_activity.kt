@@ -14,6 +14,15 @@ class Launcher_activity : AppCompatActivity() {
 
         LaunchHomeBtn.setOnClickListener { launchHome() }
         LaunchLoginBtn.setOnClickListener { launchLogin() }
+        signUpTv.setOnClickListener { launchSignup() }
+
+
+    }
+
+    private fun launchSignup() {
+        intent = Intent()
+        intent.component = ComponentName(this, activity_signup::class.java)
+        startActivity(intent)
     }
 
     private fun launchLogin() {

@@ -11,8 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity_home" />
         <activity android:name=".activity_menu" />
-        <activity android:name=".activity_login">
-        </activity>
+        <activity android:name=".activity_login"/>
+        <activity android:name=".activity_signup"/>
         <activity android:name=".menuItem" />
         <activity android:name=".Launcher_activity">
             <intent-filter>
@@ -21,6 +21,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
     </application>
 
 </manifest>
