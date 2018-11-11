@@ -4,27 +4,17 @@ import android.content.ComponentName
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_launcher_activity.*
-import kotlinx.android.synthetic.main.common_action_bar.*
-import android.R.menu
 import android.view.Menu
 import android.view.MenuItem
-import com.firebase.ui.auth.data.model.User
+import kotlinx.android.synthetic.main.common_action_bar.*
 
-
-class Launcher_activity : AppCompatActivity(), IHasActionBar {
+class UserProfile : AppCompatActivity(), IHasActionBar {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_launcher_activity)
-
-        LaunchHomeBtn.setOnClickListener { launchHome() }
-        LaunchLoginBtn.setOnClickListener { launchLogin() }
-        signUpTv.setOnClickListener { launchSignup() }
+        setContentView(R.layout.activity_user_profile)
 
         setSupportActionBar(my_toolbar)
-        //supportActionBar
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -51,22 +41,10 @@ class Launcher_activity : AppCompatActivity(), IHasActionBar {
         startActivity(intent)
     }
 
-
-    private fun launchSignup() {
-        intent = Intent()
-        intent.component = ComponentName(this, activity_signup::class.java)
-        startActivity(intent)
-    }
-
-    private fun launchLogin() {
-        intent = Intent()
-        intent.component = ComponentName(this, activity_login::class.java)
-        startActivity(intent)
-    }
-
     override fun launchHome() {
         intent = Intent()
         intent.component = ComponentName(this, activity_home::class.java)
         startActivity(intent)
     }
+
 }

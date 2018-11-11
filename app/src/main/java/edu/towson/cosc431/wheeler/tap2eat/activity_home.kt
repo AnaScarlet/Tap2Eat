@@ -4,11 +4,14 @@ import android.content.ComponentName
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_home.*
 import com.google.firebase.auth.*
+import kotlinx.android.synthetic.main.common_action_bar.*
 
-class activity_home : AppCompatActivity() {
+class activity_home : AppCompatActivity(), IHasActionBar {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,6 +22,38 @@ class activity_home : AppCompatActivity() {
         order_button.setOnClickListener{ launchMenu() }
 
         logoutBtn.setOnClickListener{logout()}
+
+        setSupportActionBar(my_toolbar)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.profile -> {
+                launchProfile()
+            }
+            R.id.home -> {
+                launchHome()
+            }
+        }
+        return true
+    }
+
+    override fun launchProfile() {
+        intent = Intent()
+        intent.component = ComponentName(this, UserProfile::class.java)
+        startActivity(intent)
+    }
+
+    override fun launchHome() {
+        intent = Intent()
+        intent.component = ComponentName(this, activity_home::class.java)
+        startActivity(intent)
     }
 
     private fun logout() {
