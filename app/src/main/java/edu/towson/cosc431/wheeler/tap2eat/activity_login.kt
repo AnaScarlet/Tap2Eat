@@ -32,6 +32,14 @@ class activity_login : AppCompatActivity(), IHasActionBar {
 
         setSupportActionBar(my_toolbar)
 
+       signTv.setOnClickListener { launchSignup() }
+    }
+
+    private fun launchSignup() {
+
+        intent = Intent()
+        intent.component = ComponentName(this, activity_signup::class.java)
+        startActivity(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

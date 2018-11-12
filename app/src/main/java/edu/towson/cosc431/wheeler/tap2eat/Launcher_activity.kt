@@ -6,10 +6,8 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_launcher_activity.*
 import kotlinx.android.synthetic.main.common_action_bar.*
-import android.R.menu
 import android.view.Menu
 import android.view.MenuItem
-import com.firebase.ui.auth.data.model.User
 
 
 class Launcher_activity : AppCompatActivity(), IHasActionBar {
@@ -20,7 +18,7 @@ class Launcher_activity : AppCompatActivity(), IHasActionBar {
 
         LaunchHomeBtn.setOnClickListener { launchHome() }
         LaunchLoginBtn.setOnClickListener { launchLogin() }
-        signUpTv.setOnClickListener { launchSignup() }
+        signTv.setOnClickListener { launchSignup() }
 
         setSupportActionBar(my_toolbar)
         //supportActionBar
