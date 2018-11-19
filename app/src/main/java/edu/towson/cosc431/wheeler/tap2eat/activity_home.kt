@@ -21,7 +21,7 @@ class activity_home : AppCompatActivity(), IHasActionBar {
 
         order_button.setOnClickListener{ launchMenu() }
 
-        logoutBtn.setOnClickListener{logout()}
+
 
         setSupportActionBar(my_toolbar)
     }
@@ -56,24 +56,7 @@ class activity_home : AppCompatActivity(), IHasActionBar {
         startActivity(intent)
     }
 
-    private fun logout() {
 
-        val user = FirebaseAuth.getInstance().currentUser
-
-        if(user != null){
-
-        FirebaseAuth.getInstance().signOut();
-
-        intent = Intent()
-        intent.component = ComponentName(this,activity_login::class.java)
-        startActivity(intent)
-
-        }else {
-            
-            intent.component = ComponentName(this,activity_home::class.java)
-            startActivity(intent)
-        }
-    }
 
     private fun launchMenu() {
 

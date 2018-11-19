@@ -49,7 +49,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/first_name"
+                    android:text="Name:"
                     android:textSize="18sp" />
 
                 <EditText
@@ -58,9 +58,55 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    tools:text="Name" />
+                    android:hint="Name"
+                    android:inputType="textPersonName" />
             </LinearLayout>
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:orientation="horizontal">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/m_name_title"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:text="@string/middle_name"-->
+                    <!--android:textSize="18sp" />-->
+
+                <!--<EditText-->
+                    <!--android:id="@+id/m_name_input"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:ems="10"-->
+                    <!--android:inputType="textPersonName"-->
+                    <!--tools:text="Name" />-->
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="50dp"-->
+                <!--android:orientation="horizontal">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/l_name_title"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:text="@string/last_name"-->
+                    <!--android:textSize="18sp" />-->
+
+                <!--<EditText-->
+                    <!--android:id="@+id/l_name_input"-->
+                    <!--android:layout_width="0dp"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:ems="10"-->
+                    <!--android:inputType="textPersonName"-->
+                    <!--tools:text="Name" />-->
+            <!--</LinearLayout>-->
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -68,67 +114,21 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/m_name_title"
+                    android:id="@+id/password_title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="@string/middle_name"
+                    android:text="Password:"
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/m_name_input"
+                    android:id="@+id/password_input"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    tools:text="Name" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/l_name_title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/last_name"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/l_name_input"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    tools:text="Name" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/address_title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/addres"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/address_input"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:inputType="textPersonName"
-                    tools:text="Address" />
+                    android:hint="Password"
+                    android:inputType="textPersonName" />
             </LinearLayout>
 
             <LinearLayout
@@ -150,34 +150,42 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:ems="10"
-                    android:inputType="phone"
-                    tools:text="##########" />
+                    android:hint="Phone Number"
+                    android:inputType="phone" />
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:orientation="vertical">
+            <!--<LinearLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="80dp"-->
+                <!--android:orientation="vertical">-->
 
-                <TextView
-                    android:id="@+id/email_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:text="@string/contact_email"
-                    android:textSize="18sp" />
+                <!--<TextView-->
+                    <!--android:id="@+id/email_title"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="0dp"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:text="@string/contact_email"-->
+                    <!--android:textSize="18sp" />-->
 
-                <EditText
-                    android:id="@+id/email_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:ems="10"
-                    android:inputType="textEmailAddress"
-                    tools:text="you@mail.com" />
-            </LinearLayout>
-
+                <!--<EditText-->
+                    <!--android:id="@+id/email_input"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="0dp"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:ems="10"-->
+                    <!--android:inputType="textEmailAddress"-->
+                    <!--tools:text="you@mail.com" />-->
+            <!--</LinearLayout>-->
+            <Button
+                android:id="@+id/logoutBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="3dp"
+                android:background="@color/colorPrimary"
+                android:text="Logout"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
     </LinearLayout>

@@ -13,6 +13,7 @@
         android:minHeight="50dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
         app:logo="@drawable/ic_action_name"
-        app:title="@string/app_name" />
+        app:title="@string/app_name"
+        app:titleTextColor="#ffff"/>
 
 </LinearLayout>
