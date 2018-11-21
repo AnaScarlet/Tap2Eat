@@ -28,50 +28,70 @@
 
 
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/stock_spaghetti" />
+        <!--<ImageView-->
+            <!--android:id="@+id/imageView"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:srcCompat="@drawable/stock_spaghetti" />-->
 
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+        <!--<TextView-->
+            <!--android:id="@+id/name"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="TextView"-->
+            <!--android:textSize="24sp"-->
+            <!--android:textStyle="bold" />-->
 
-        <TextView
-            android:id="@+id/address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+        <!--<TextView-->
+            <!--android:id="@+id/address"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="TextView" />-->
 
-        <TextView
-            android:id="@+id/description"
+        <!--<TextView-->
+            <!--android:id="@+id/description"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="TextView" />-->
+
+
+        <!--<TextView-->
+            <!--android:id="@+id/type_tags"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="TextView" />-->
+
+
+        <!--<Button-->
+            <!--android:id="@+id/order_button"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:text="@string/to_menu_btn"-->
+            <!--android:textColor="@android:color/white" />-->
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/catagoryRV"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="TextView" />
+                android:layout_weight="10"
+                tools:listitem="@layout/catagory_view"
+        >
 
+        </android.support.v7.widget.RecyclerView>
 
-        <TextView
-            android:id="@+id/type_tags"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
-
-        <Button
+        <android.support.design.widget.FloatingActionButton
             android:id="@+id/order_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@color/colorPrimary"
-            android:text="@string/to_menu_btn"
-            android:textColor="@android:color/white" />
-
+            android:clickable="true"
+            app:backgroundTint="@color/colorPrimaryDark"
+            app:elevation="2dp"
+            app:srcCompat="@android:drawable/ic_menu_add"
+            android:layout_gravity="right"
+           />
 
 
     </LinearLayout>
