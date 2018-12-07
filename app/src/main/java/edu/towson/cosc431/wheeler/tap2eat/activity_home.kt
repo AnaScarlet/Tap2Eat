@@ -21,7 +21,7 @@ class activity_home : AppCompatActivity(), IHasActionBar {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-//        populateView()
+
 
         order_button.setOnClickListener{ launchMenu() }
 
@@ -30,11 +30,9 @@ class activity_home : AppCompatActivity(), IHasActionBar {
 
         val adapter = Catagory_adapter(catagoryList)
 
-        //TODO: need to be fixed later
-        //catagory_view.layoutManager = LinearLayoutManager(this)
+
         catagoryRV.layoutManager= LinearLayoutManager(this)
-//
-//
+
         catagoryRV.adapter = adapter
 
                 populateCatagory()
@@ -109,25 +107,4 @@ class activity_home : AppCompatActivity(), IHasActionBar {
 
     }
 
-//    private fun populateView() {
-//        val restntTags = ArrayList<String>()
-//        restntTags.add("Italian")
-//        restntTags.add("Pasta")
-//        restntTags.add("Spaghetti")
-//        restntTags.add("Fettuccine")
-//        restntTags.add("Linguine")
-//        val restnt = Restaurant("Italian Spaghetti", "123 Great Drive, Towson, MD",
-//                "The best Italian restaurant in town. Offers the best spaghetti withh meatballs.", restntTags)
-//
-//        name.text = restnt.name
-//        address.text = restnt.address
-//        description.text = restnt.description
-//        var tags:String = ""
-//        val rIter = restntTags.iterator()
-//        while(rIter.hasNext()) {
-//            tags += rIter.next()+ ", "
-//        }
-//        type_tags.text = tags
-//
-//    }
 }

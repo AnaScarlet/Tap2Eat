@@ -8,6 +8,6 @@ data class menuItem(
 
                     val name: String,
                     val description: String,
-                    val price: String,
-                    val image: Int
+                    val price: String
+                    //val image: Int
                     )

@@ -32,13 +32,13 @@ class activity_menu : AppCompatActivity(), IHasActionBar {
         recyclerView.adapter = MenuItemAdapter(menu)
 
 
-        menu.add(menuItem(" Cheese Steak", "Steak, lettuce,\n" +
+        menu.add(menuItem("Cheese Steak", "Steak, lettuce,\n" +
                 "tomatoes, mayo, mushrooms, green peppers,\n" +
-                "onions, hot peppers & provolone", "7.00", R.drawable.ic_launcher_background))
-        menu.add(menuItem("Beef Weelington", "Blah  Blah Blah","5.00",R.drawable.ic_launcher_background ))
-        menu.add(menuItem("Spaghetti & Meatballs", "Blah  Blah Blah","6.00",R.drawable.ic_launcher_background))
-        menu.add(menuItem("Other Random Foods", "Blah  Blah Blah","7.00",R.drawable.ic_launcher_background))
-        menu.add(menuItem("Cheesecake", "Blah  Blah Blah","5.00",R.drawable.ic_launcher_background))
+                "onions, hot peppers & provolone", "7.00"))
+        menu.add(menuItem("Beef Weelington", "Blah  Blah Blah","5.00" ))
+        menu.add(menuItem("Spaghetti & Meatballs", "Blah  Blah Blah","6.00"))
+        menu.add(menuItem("Other Random Foods", "Blah  Blah Blah","7.00"))
+        menu.add(menuItem("Cheesecake", "Blah  Blah Blah","5.00"))
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

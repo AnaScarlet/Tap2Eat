@@ -1,81 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context=".menuItem">
-
-    <!--<ImageView-->
-        <!--android:id="@+id/imageView2"-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_weight="1"-->
-        <!--android:paddingLeft="10dp"-->
-        <!--app:srcCompat="@android:color/holo_blue_light" />-->
-
-    <!--<LinearLayout-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_weight="1"-->
-        <!--android:orientation="vertical">-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/itemName"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:text="Onion Rings"-->
-            <!--android:textSize="30sp" />-->
-
-        <!--<TextView-->
-            <!--android:id="@+id/itemDescrip"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_weight="1"-->
-            <!--android:text="This dish consits of blah blah blah blah blah" />-->
-    <!--</LinearLayout>-->
+    android:elevation="10dp"
+    android:layout_margin="5dp"
+    android:layout_height="wrap_content">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp"
+
+
+
         >
 
-        <ImageView
-            android:id="@+id/menu_img"
-            android:layout_width="84dp"
-            android:layout_height="77dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            app:srcCompat="@drawable/stock_spaghetti"
-            android:layout_marginRight="16dp" />
+        <!--<ImageView-->
+            <!--android:id="@+id/menu_img"-->
+            <!--android:layout_width="84dp"-->
+            <!--android:layout_height="77dp"-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--app:srcCompat="@drawable/stock_spaghetti"-->
+            <!--android:layout_marginRight="16dp" />-->
 
         <TextView
+            android:id="@+id/menu_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/menu_name"
-            android:layout_toRightOf="@+id/menu_img"
             android:layout_alignParentTop="true"
-            android:textSize="30sp"
-            />
+            android:text="name"
+            android:textColor="@color/colorPrimary"
+
+            android:textSize="25sp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/menu_description"
-            android:layout_toRightOf="@+id/menu_img"
+            android:text="description"
             android:layout_below="@+id/menu_name"
+            android:textSize="18sp"
+
+
             />
 
         <TextView
+            android:id="@+id/menu_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/menu_price"
-            android:layout_toRightOf="@+id/menu_img"
             android:layout_below="@+id/menu_description"
-            />
+            android:text="price"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
 
     </RelativeLayout>
 
-</LinearLayout>
+</android.support.v7.widget.CardView>
