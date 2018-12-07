@@ -7,17 +7,16 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Adapter
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_home.*
 import com.google.firebase.auth.*
-import edu.towson.cosc431.wheeler.tap2eat.R.id.recyclerView
 import kotlinx.android.synthetic.main.common_action_bar.*
 
 class activity_home : AppCompatActivity(), IHasActionBar {
 
 
     var catagoryList: MutableList<category> = mutableListOf()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -32,16 +31,34 @@ class activity_home : AppCompatActivity(), IHasActionBar {
         val adapter = Catagory_adapter(catagoryList)
 
         //TODO: need to be fixed later
-//                recyclerView.layoutManager = LinearLayoutManager(this)
+        //catagory_view.layoutManager = LinearLayoutManager(this)
+        catagoryRV.layoutManager= LinearLayoutManager(this)
 //
 //
-//                recyclerView.adapter = adapter
+        catagoryRV.adapter = adapter
 
                 populateCatagory()
     }
 
     private fun populateCatagory() {
-        //TODO: get catagory from Firebase
+
+
+
+        if(catagoryList.isEmpty()){
+
+
+
+            catagoryList.add(category(3,"Pizza",R.drawable.pizza_cat))
+            catagoryList.add(category(4,"Sandwitch",R.drawable.subs_cat))
+            catagoryList.add(category(2,"Pasta",R.drawable.pasta_cat))
+            catagoryList.add(category(1,"Soda",R.drawable.soda_cat))
+
+        }else{
+            (1..catagoryList.size).forEach {
+
+                catagoryList.get(5)
+            }
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

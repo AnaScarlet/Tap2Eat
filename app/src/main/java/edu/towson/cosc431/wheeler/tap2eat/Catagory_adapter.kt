@@ -22,8 +22,8 @@ class Catagory_adapter (val catagoryMenu : List<category>): RecyclerView.Adapter
 
     override fun onBindViewHolder(holder: CatagoryItemViewHolder, position: Int) {
         val catagoryitem = catagoryMenu.get(position)
-        holder.itemView.catagory_name.text
-        holder.itemView.catagory_image.drawable
+        holder.itemView.catagory_name.text = catagoryitem.name
+        holder.itemView.catagory_image.setImageResource(catagoryitem.image)
     }
 }
 
