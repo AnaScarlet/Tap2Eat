@@ -7,28 +7,24 @@ import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_home.*
-import com.google.firebase.auth.*
 import kotlinx.android.synthetic.main.common_action_bar.*
 
 class activity_home : AppCompatActivity(), IHasActionBar {
 
-
-    var catagoryList: MutableList<category> = mutableListOf()
+    var categoryList: MutableList<category> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
 
-
-        order_button.setOnClickListener{ launchMenu() }
+        //order_button.setOnClickListener{ launchMenu() }
 
 
         setSupportActionBar(my_toolbar)
 
-        val adapter = Catagory_adapter(catagoryList)
+        val adapter = Catagory_adapter(categoryList)
 
 
         catagoryRV.layoutManager= LinearLayoutManager(this)
@@ -40,21 +36,17 @@ class activity_home : AppCompatActivity(), IHasActionBar {
 
     private fun populateCatagory() {
 
+        if(categoryList.isEmpty()){
 
-
-        if(catagoryList.isEmpty()){
-
-
-
-            catagoryList.add(category(3,"Pizza",R.drawable.pizza_cat))
-            catagoryList.add(category(4,"Sandwitch",R.drawable.subs_cat))
-            catagoryList.add(category(2,"Pasta",R.drawable.pasta_cat))
-            catagoryList.add(category(1,"Soda",R.drawable.soda_cat))
+            categoryList.add(category(3,"Pizza",R.drawable.pizza_cat))
+            categoryList.add(category(4,"Sandwitch",R.drawable.subs_cat))
+            categoryList.add(category(2,"Pasta",R.drawable.pasta_cat))
+            categoryList.add(category(1,"Soda",R.drawable.soda_cat))
 
         }else{
-            (1..catagoryList.size).forEach {
+            (1..categoryList.size).forEach {
 
-                catagoryList.get(5)
+                categoryList.get(5)
             }
         }
     }
@@ -73,6 +65,14 @@ class activity_home : AppCompatActivity(), IHasActionBar {
             R.id.home -> {
                 launchHome()
             }
+            R.id.cart -> {
+                launchCart()
+            }
+            else -> {
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                super.onOptionsItemSelected(item)
+            }
         }
         return true
     }
@@ -84,27 +84,15 @@ class activity_home : AppCompatActivity(), IHasActionBar {
     }
 
     override fun launchHome() {
+        // Already here
+    }
+
+    override fun launchCart() {
         intent = Intent()
-        intent.component = ComponentName(this, activity_home::class.java)
+        intent.component = ComponentName(this, CartActivity::class.java)
         startActivity(intent)
     }
 
 
-
-    private fun launchMenu() {
-
-        val user = FirebaseAuth.getInstance().currentUser
-        if (user != null) {
-            intent = Intent()
-            intent.component = ComponentName(this, activity_menu::class.java)
-            startActivity(intent)
-
-        } else {
-            Toast.makeText(this,"Log in to make an order",Toast.LENGTH_SHORT).show();
-            intent.component = ComponentName(this,activity_login::class.java)
-            startActivity(intent)
-        }
-
-    }
 
 }

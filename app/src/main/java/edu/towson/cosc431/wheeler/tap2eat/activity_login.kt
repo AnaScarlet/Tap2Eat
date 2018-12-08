@@ -56,6 +56,14 @@ class activity_login : AppCompatActivity(), IHasActionBar {
             R.id.home -> {
                 launchHome()
             }
+            R.id.cart -> {
+                launchCart()
+            }
+            else -> {
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                super.onOptionsItemSelected(item)
+            }
         }
         return true
     }
@@ -69,6 +77,12 @@ class activity_login : AppCompatActivity(), IHasActionBar {
     override fun launchHome() {
         intent = Intent()
         intent.component = ComponentName(this, activity_home::class.java)
+        startActivity(intent)
+    }
+
+    override fun launchCart() {
+        intent = Intent()
+        intent.component = ComponentName(this, CartActivity::class.java)
         startActivity(intent)
     }
 

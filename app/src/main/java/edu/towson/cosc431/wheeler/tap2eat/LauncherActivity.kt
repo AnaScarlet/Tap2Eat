@@ -10,7 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 
 
-class Launcher_activity : AppCompatActivity(), IHasActionBar {
+class LauncherActivity : AppCompatActivity(), IHasActionBar {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +39,14 @@ class Launcher_activity : AppCompatActivity(), IHasActionBar {
             R.id.home -> {
                 launchHome()
             }
+            R.id.cart -> {
+                launchCart()
+            }
+            else -> {
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                super.onOptionsItemSelected(item)
+            }
         }
         return true
     }
@@ -48,7 +56,6 @@ class Launcher_activity : AppCompatActivity(), IHasActionBar {
         intent.component = ComponentName(this, UserProfile::class.java)
         startActivity(intent)
     }
-
 
     private fun launchSignup() {
         intent = Intent()
@@ -65,6 +72,12 @@ class Launcher_activity : AppCompatActivity(), IHasActionBar {
     override fun launchHome() {
         intent = Intent()
         intent.component = ComponentName(this, activity_home::class.java)
+        startActivity(intent)
+    }
+
+    override fun launchCart() {
+        intent = Intent()
+        intent.component = ComponentName(this, CartActivity::class.java)
         startActivity(intent)
     }
 }

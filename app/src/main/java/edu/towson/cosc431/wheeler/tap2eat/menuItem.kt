@@ -1,8 +1,5 @@
 package edu.towson.cosc431.wheeler.tap2eat
 
-import android.media.Image
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
 
 data class menuItem(
 

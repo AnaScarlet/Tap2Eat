@@ -9,4 +9,7 @@
     <string name="phone">Phone number:</string>
     <string name="contact_email">Email address where we can reach you:</string>
     <string name="welcome_message">Hi, %s!</string>
+    <string name="submit_cart">Order</string>
+    <string name="channel_name">Food Order Channel</string>
+    <string name="channel_description">Notification for when the food order is ready</string>
 </resources>

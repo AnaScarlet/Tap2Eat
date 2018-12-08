@@ -27,8 +27,6 @@ class activity_menu : AppCompatActivity(), IHasActionBar {
     var itemList = db.getReference("menuItem")
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_menu)
@@ -42,7 +40,7 @@ class activity_menu : AppCompatActivity(), IHasActionBar {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         // 3. set the adapter on the recyclerview
-        recyclerView.adapter = MenuItemAdapter(menu)
+        recyclerView.adapter = menuAdapter
 
 
         menu.add(menuItem("Cheese Steak", "Steak, lettuce,\n" +
@@ -92,6 +90,14 @@ class activity_menu : AppCompatActivity(), IHasActionBar {
             R.id.home -> {
                 launchHome()
             }
+            R.id.cart -> {
+                launchCart()
+            }
+            else -> {
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                super.onOptionsItemSelected(item)
+            }
         }
         return true
     }
@@ -105,6 +111,12 @@ class activity_menu : AppCompatActivity(), IHasActionBar {
     override fun launchHome() {
         intent = Intent()
         intent.component = ComponentName(this, activity_home::class.java)
+        startActivity(intent)
+    }
+
+    override fun launchCart() {
+        intent = Intent()
+        intent.component = ComponentName(this, CartActivity::class.java)
         startActivity(intent)
     }
 }

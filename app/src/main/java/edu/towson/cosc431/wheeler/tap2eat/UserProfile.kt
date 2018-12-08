@@ -55,14 +55,19 @@ class UserProfile : AppCompatActivity(), IHasActionBar {
             R.id.home -> {
                 launchHome()
             }
+            R.id.cart -> {
+                launchCart()
+            }
+            else -> {
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                super.onOptionsItemSelected(item)
+            }
         }
         return true
     }
 
     private fun logout() {
-
-
-
         if(user != null){
 
             FirebaseAuth.getInstance().signOut();
@@ -79,14 +84,18 @@ class UserProfile : AppCompatActivity(), IHasActionBar {
     }
 
     override fun launchProfile() {
-        intent = Intent()
-        intent.component = ComponentName(this, UserProfile::class.java)
-        startActivity(intent)
+        // Already here
     }
 
     override fun launchHome() {
         intent = Intent()
         intent.component = ComponentName(this, activity_home::class.java)
+        startActivity(intent)
+    }
+
+    override fun launchCart() {
+        intent = Intent()
+        intent.component = ComponentName(this, CartActivity::class.java)
         startActivity(intent)
     }
 
