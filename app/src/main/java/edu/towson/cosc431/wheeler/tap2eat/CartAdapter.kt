@@ -1,5 +1,7 @@
 package edu.towson.cosc431.wheeler.tap2eat
 
+import android.content.DialogInterface
+import android.support.v7.app.AlertDialog
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -18,11 +20,25 @@ class CartAdapter() : RecyclerView.Adapter<CartItemViewHolder>()  {
         val itemViewHolder = CartItemViewHolder(view)
 
         // Delete from cart on click
-        itemViewHolder.itemView.setOnClickListener {
-            val position = itemViewHolder.adapterPosition
-            Cart.deleteFromCart(position)
-            Toast.makeText(parent.context, "Item removed from cart", Toast.LENGTH_LONG).show()
-            notifyItemRemoved(position)
+        itemViewHolder.itemView.setOnLongClickListener {
+
+            val builder = AlertDialog.Builder(it.context)
+
+            builder.setMessage(R.string.delete_dialog)
+                    .setPositiveButton(R.string.delete_btn,
+                            DialogInterface.OnClickListener { dialog, id ->
+                                // Send the positive button event back to the host activity
+                                deleteEventListener(itemViewHolder, parent)
+                            })
+                    .setNegativeButton(R.string.cancel,
+                            DialogInterface.OnClickListener { dialog, id ->
+                                // Do nothing
+                            })
+
+            val alertDialog = builder.create()
+            alertDialog.show()
+            
+            true
         }
 
         return itemViewHolder
@@ -41,6 +57,13 @@ class CartAdapter() : RecyclerView.Adapter<CartItemViewHolder>()  {
         holder.itemView.menu_description.text = menuitem.description
         holder.itemView.menu_price.text = menuitem.price
 //        holder.itemView.menu_img.se = menuitem.image
+    }
+
+    fun deleteEventListener(itemViewHolder: CartItemViewHolder, parent: ViewGroup) {
+        val position = itemViewHolder.adapterPosition
+        Cart.deleteFromCart(position)
+        Toast.makeText(parent.context, "Item removed from cart", Toast.LENGTH_LONG).show()
+        notifyItemRemoved(position)
     }
 
 }

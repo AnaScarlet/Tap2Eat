@@ -2,25 +2,22 @@ package edu.towson.cosc431.wheeler.tap2eat
 
 import android.content.ComponentName
 import android.content.Intent
+import android.content.IntentFilter
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.LocalBroadcastManager
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.Menu
 import android.view.MenuItem
-import edu.towson.cosc431.wheeler.tap2eat.R.id.recyclerView
 import kotlinx.android.synthetic.main.activity_menu.*
 import kotlinx.android.synthetic.main.common_action_bar.*
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import android.widget.Toast
-import com.google.firebase.FirebaseError
 import com.google.firebase.database.*
 
 
 class activity_menu : AppCompatActivity(), IHasActionBar {
 
     var menu: MutableList<menuItem> = mutableListOf()
+    private val broadcastReceiver = FoodOrderBroadcastReceiver()
 
     //initialize firebase
     var db = FirebaseDatabase.getInstance()
@@ -52,6 +49,23 @@ class activity_menu : AppCompatActivity(), IHasActionBar {
         menu.add(menuItem("Cheesecake", "Blah  Blah Blah","5.00"))
 
 //        getmenu()
+    }
+
+    override fun onResume() {
+        val filter = IntentFilter(LauncherActivity.ACTION_ORDER)
+        LocalBroadcastManager
+                .getInstance(this)
+                .registerReceiver(broadcastReceiver, filter)
+
+        super.onResume()
+    }
+
+    override fun onPause() {
+        LocalBroadcastManager
+                .getInstance(this)
+                .unregisterReceiver(broadcastReceiver)
+
+        super.onPause()
     }
 
 //    private fun getmenu() {
@@ -104,7 +118,7 @@ class activity_menu : AppCompatActivity(), IHasActionBar {
 
     override fun launchProfile() {
         intent = Intent()
-        intent.component = ComponentName(this, UserProfile::class.java)
+        intent.component = ComponentName(this, UserProfileActivity::class.java)
         startActivity(intent)
     }
 

@@ -1,9 +1,13 @@
 package edu.towson.cosc431.wheeler.tap2eat
 
-import android.content.ComponentName
-import android.content.Intent
+import android.app.IntentService
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.*
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.LocalBroadcastManager
 import kotlinx.android.synthetic.main.activity_launcher_activity.*
 import kotlinx.android.synthetic.main.common_action_bar.*
 import android.view.Menu
@@ -11,6 +15,16 @@ import android.view.MenuItem
 
 
 class LauncherActivity : AppCompatActivity(), IHasActionBar {
+
+    private val broadcastReceiver = FoodOrderBroadcastReceiver()
+
+    companion object {
+        val CHANNEL_ID = "CART FOOD ORDER"
+        val NOTIF_ID = 333
+        val MESSAGE = "Your order is ready!"
+        val ACTION_ORDER = "ORDER THIS"
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,9 +35,42 @@ class LauncherActivity : AppCompatActivity(), IHasActionBar {
         signTv.setOnClickListener { launchSignup() }
 
         setSupportActionBar(my_toolbar)
-        //supportActionBar
+        createNotificationChannel()
 
     }
+
+    override fun onResume() {
+        val filter = IntentFilter(ACTION_ORDER)
+        LocalBroadcastManager
+                .getInstance(this)
+                .registerReceiver(broadcastReceiver, filter)
+
+        super.onResume()
+    }
+
+    override fun onPause() {
+        LocalBroadcastManager
+                .getInstance(this)
+                .unregisterReceiver(broadcastReceiver)
+
+        super.onPause()
+    }
+
+    fun createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {  // Make sure Android version is compatible
+            // Create the NotificationChannel
+            val name = getString(R.string.channel_name)
+            val descriptionText = getString(R.string.channel_description)
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val mChannel = NotificationChannel(CHANNEL_ID, name, importance)
+            mChannel.description = descriptionText
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            val notificationManager = getSystemService(IntentService.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(mChannel)
+        }
+    }
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -53,7 +100,7 @@ class LauncherActivity : AppCompatActivity(), IHasActionBar {
 
     override fun launchProfile() {
         intent = Intent()
-        intent.component = ComponentName(this, UserProfile::class.java)
+        intent.component = ComponentName(this, UserProfileActivity::class.java)
         startActivity(intent)
     }
 

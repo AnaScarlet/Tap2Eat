@@ -15,9 +15,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="ACTION_ORDER"/>
+            </intent-filter>
         </activity>
-        <activity android:name=".UserProfile" />
-        <activity android:name=".CartActivity"></activity>
+        <activity android:name=".UserProfileActivity" />
+        <activity android:name=".CartActivity"/>
     </application>
 
 </manifest>

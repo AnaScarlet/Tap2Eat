@@ -2,11 +2,12 @@ package edu.towson.cosc431.wheeler.tap2eat
 
 import android.content.ComponentName
 import android.content.Intent
+import android.content.IntentFilter
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.LocalBroadcastManager
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Button
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_signup.*
@@ -16,6 +17,8 @@ import kotlinx.android.synthetic.main.common_action_bar.*
 class activity_signup : AppCompatActivity(), IHasActionBar {
 
     private lateinit var mAuth: FirebaseAuth
+    private val broadcastReceiver = FoodOrderBroadcastReceiver()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
@@ -25,6 +28,23 @@ class activity_signup : AppCompatActivity(), IHasActionBar {
         signup.setOnClickListener { signUp() }
 
         setSupportActionBar(my_toolbar)
+    }
+
+    override fun onResume() {
+        val filter = IntentFilter(LauncherActivity.ACTION_ORDER)
+        LocalBroadcastManager
+                .getInstance(this)
+                .registerReceiver(broadcastReceiver, filter)
+
+        super.onResume()
+    }
+
+    override fun onPause() {
+        LocalBroadcastManager
+                .getInstance(this)
+                .unregisterReceiver(broadcastReceiver)
+
+        super.onPause()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -55,7 +75,7 @@ class activity_signup : AppCompatActivity(), IHasActionBar {
 
     override fun launchProfile() {
         intent = Intent()
-        intent.component = ComponentName(this, UserProfile::class.java)
+        intent.component = ComponentName(this, UserProfileActivity::class.java)
         startActivity(intent)
     }
 

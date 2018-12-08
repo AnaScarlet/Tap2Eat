@@ -2,8 +2,10 @@ package edu.towson.cosc431.wheeler.tap2eat
 
 import android.content.ComponentName
 import android.content.Intent
+import android.content.IntentFilter
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v4.content.LocalBroadcastManager
 import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.MenuItem
@@ -13,6 +15,7 @@ import kotlinx.android.synthetic.main.common_action_bar.*
 class activity_home : AppCompatActivity(), IHasActionBar {
 
     var categoryList: MutableList<category> = mutableListOf()
+    private val broadcastReceiver = FoodOrderBroadcastReceiver()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +54,23 @@ class activity_home : AppCompatActivity(), IHasActionBar {
         }
     }
 
+    override fun onResume() {
+        val filter = IntentFilter(LauncherActivity.ACTION_ORDER)
+        LocalBroadcastManager
+                .getInstance(this)
+                .registerReceiver(broadcastReceiver, filter)
+
+        super.onResume()
+    }
+
+    override fun onPause() {
+        LocalBroadcastManager
+                .getInstance(this)
+                .unregisterReceiver(broadcastReceiver)
+
+        super.onPause()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
@@ -79,7 +99,7 @@ class activity_home : AppCompatActivity(), IHasActionBar {
 
     override fun launchProfile() {
         intent = Intent()
-        intent.component = ComponentName(this, UserProfile::class.java)
+        intent.component = ComponentName(this, UserProfileActivity::class.java)
         startActivity(intent)
     }
 

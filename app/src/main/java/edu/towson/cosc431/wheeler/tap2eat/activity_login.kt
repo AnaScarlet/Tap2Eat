@@ -7,6 +7,8 @@ import android.os.Bundle
 import com.google.firebase.auth.*
 import android.widget.Toast
 import android.content.Intent
+import android.content.IntentFilter
+import android.support.v4.content.LocalBroadcastManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -19,6 +21,8 @@ class activity_login : AppCompatActivity(), IHasActionBar {
 //    private lateinit var reference: DatabaseReference
 
     private lateinit var mAuth: FirebaseAuth
+    private val broadcastReceiver = FoodOrderBroadcastReceiver()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -33,6 +37,23 @@ class activity_login : AppCompatActivity(), IHasActionBar {
         setSupportActionBar(my_toolbar)
 
        signTv.setOnClickListener { launchSignup() }
+    }
+
+    override fun onResume() {
+        val filter = IntentFilter(LauncherActivity.ACTION_ORDER)
+        LocalBroadcastManager
+                .getInstance(this)
+                .registerReceiver(broadcastReceiver, filter)
+
+        super.onResume()
+    }
+
+    override fun onPause() {
+        LocalBroadcastManager
+                .getInstance(this)
+                .unregisterReceiver(broadcastReceiver)
+
+        super.onPause()
     }
 
     private fun launchSignup() {
@@ -70,7 +91,7 @@ class activity_login : AppCompatActivity(), IHasActionBar {
 
     override fun launchProfile() {
         intent = Intent()
-        intent.component = ComponentName(this, UserProfile::class.java)
+        intent.component = ComponentName(this, UserProfileActivity::class.java)
         startActivity(intent)
     }
 

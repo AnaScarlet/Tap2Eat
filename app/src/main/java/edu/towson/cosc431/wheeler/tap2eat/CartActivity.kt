@@ -1,11 +1,7 @@
 package edu.towson.cosc431.wheeler.tap2eat
 
-import android.app.IntentService
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.*
-import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.NotificationCompat
@@ -24,31 +20,21 @@ class CartActivity : AppCompatActivity(), IHasActionBar{
     private val broadcastReceiver = FoodOrderBroadcastReceiver()
 
     companion object {
-        val CHANNEL_ID = "CART FOOD ORDER"
-        val NOTIF_ID = 333
-        val MESSAGE = "Your order is ready!"
-        val ACTION_ORDER = "ORDER THIS"
+        //val CHANNEL_ID = "CART FOOD ORDER"
+        //val NOTIF_ID = 333
+        //val MESSAGE = "Your order is ready!"
+        //val ACTION_ORDER = "ORDER THIS"
         val TAG = "CartActivity"
     }
 
-    inner class FoodOrderBroadcastReceiver : BroadcastReceiver() {
-        override fun onReceive(context: Context?, intent: Intent?) {
-            Toast.makeText(context, MESSAGE, Toast.LENGTH_LONG).show()
-            if (context != null) {
-                NotificationManagerCompat
-                        .from(context)
-                        .cancel(CHANNEL_ID, NOTIF_ID)
-            }
-        }
 
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
 
         setSupportActionBar(my_toolbar)
-        createNotificationChannel()
+        //createNotificationChannel()
 
         cart_recycler_view.layoutManager = LinearLayoutManager(this)
         val cartAdapter = CartAdapter()
@@ -72,7 +58,7 @@ class CartActivity : AppCompatActivity(), IHasActionBar{
                 Thread.sleep(10*1000)
 
                 val broadcastReceiverIntent = Intent()
-                broadcastReceiverIntent.setAction(ACTION_ORDER)
+                broadcastReceiverIntent.setAction(LauncherActivity.ACTION_ORDER)
 
                 val activityIntent = Intent(this@CartActivity, LauncherActivity::class.java)
                 activityIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -86,8 +72,8 @@ class CartActivity : AppCompatActivity(), IHasActionBar{
                 Log.d(TAG, "result from sending broadcast = " + result.toString())
                 if (!result) {
                     // Show notification
-                    val notification = NotificationCompat.Builder(this@CartActivity, CHANNEL_ID) // ChannelId - notifications can be grouped into channels
-                            .setContentTitle(MESSAGE)
+                    val notification = NotificationCompat.Builder(this@CartActivity, LauncherActivity.CHANNEL_ID) // ChannelId - notifications can be grouped into channels
+                            .setContentTitle(LauncherActivity.MESSAGE)
                             .setSmallIcon(android.R.drawable.ic_input_get)
                             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                             .setContentIntent(pendingIntent)
@@ -95,31 +81,15 @@ class CartActivity : AppCompatActivity(), IHasActionBar{
                             .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                             .build() // Returns the actual notification
 
-                    NotificationManagerCompat.from(this@CartActivity).notify(NOTIF_ID, notification)
+                    NotificationManagerCompat.from(this@CartActivity).notify(LauncherActivity.NOTIF_ID, notification)
                 }
 
             }
         }.start()
     }
 
-
-    fun createNotificationChannel() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {  // Make sure Android version is compatible
-            // Create the NotificationChannel
-            val name = getString(R.string.channel_name)
-            val descriptionText = getString(R.string.channel_description)
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
-            val mChannel = NotificationChannel(CHANNEL_ID, name, importance)
-            mChannel.description = descriptionText
-            // Register the channel with the system; you can't change the importance
-            // or other notification behaviors after this
-            val notificationManager = getSystemService(IntentService.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(mChannel)
-        }
-    }
-
     override fun onResume() {
-        val filter = IntentFilter(ACTION_ORDER)
+        val filter = IntentFilter(LauncherActivity.ACTION_ORDER)
         LocalBroadcastManager
                 .getInstance(this)
                 .registerReceiver(broadcastReceiver, filter)
@@ -164,7 +134,7 @@ class CartActivity : AppCompatActivity(), IHasActionBar{
 
     override fun launchProfile() {
         intent = Intent()
-        intent.component = ComponentName(this, UserProfile::class.java)
+        intent.component = ComponentName(this, UserProfileActivity::class.java)
         startActivity(intent)
     }
 
