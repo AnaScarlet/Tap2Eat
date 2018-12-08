@@ -6,7 +6,9 @@ import android.view.ViewGroup
 import android.support.v7.widget.RecyclerView
 import kotlinx.android.synthetic.main.menuitem_view.view.*
 
-class MenuItemAdapter(val menu: List<menuItem>) : RecyclerView.Adapter<MenuItemViewHolder>() {
+class MenuItemAdapter(val menu: List<menuItem>) : RecyclerView.Adapter<MenuItemViewHolder>()  {
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MenuItemViewHolder {
         // 1. Inflate a view

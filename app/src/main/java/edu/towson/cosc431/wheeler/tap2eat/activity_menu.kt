@@ -11,10 +11,23 @@ import android.view.MenuItem
 import edu.towson.cosc431.wheeler.tap2eat.R.id.recyclerView
 import kotlinx.android.synthetic.main.activity_menu.*
 import kotlinx.android.synthetic.main.common_action_bar.*
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import android.widget.Toast
+import com.google.firebase.FirebaseError
+import com.google.firebase.database.*
+
 
 class activity_menu : AppCompatActivity(), IHasActionBar {
 
     var menu: MutableList<menuItem> = mutableListOf()
+
+    //initialize firebase
+    var db = FirebaseDatabase.getInstance()
+    var itemList = db.getReference("menuItem")
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +52,31 @@ class activity_menu : AppCompatActivity(), IHasActionBar {
         menu.add(menuItem("Spaghetti & Meatballs", "Blah  Blah Blah","6.00"))
         menu.add(menuItem("Other Random Foods", "Blah  Blah Blah","7.00"))
         menu.add(menuItem("Cheesecake", "Blah  Blah Blah","5.00"))
+
+//        getmenu()
     }
+
+//    private fun getmenu() {
+//
+//
+//
+//        val messageListener = object : ValueEventListener {
+//
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//                if (dataSnapshot.exists()) {
+//                    val message = dataSnapshot.getValue(activity_menu::class.java)
+//                    // ...
+//                }
+//            }
+//
+//            override fun onCancelled(databaseError: DatabaseError) {
+//                // Failed to read value
+//            }
+//        }
+//
+//        itemList!!.addValueEventListener(messageListener)
+//
+//    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
