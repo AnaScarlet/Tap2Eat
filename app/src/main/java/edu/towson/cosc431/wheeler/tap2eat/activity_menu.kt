@@ -40,13 +40,16 @@ class activity_menu : AppCompatActivity(), IHasActionBar {
         recyclerView.adapter = menuAdapter
 
 
-        menu.add(menuItem("Cheese Steak", "Steak, lettuce,\n" +
-                "tomatoes, mayo, mushrooms, green peppers,\n" +
-                "onions, hot peppers & provolone", "7.00"))
-        menu.add(menuItem("Beef Weelington", "Blah  Blah Blah","5.00" ))
-        menu.add(menuItem("Spaghetti & Meatballs", "Blah  Blah Blah","6.00"))
-        menu.add(menuItem("Other Random Foods", "Blah  Blah Blah","7.00"))
-        menu.add(menuItem("Cheesecake", "Blah  Blah Blah","5.00"))
+        menu.add(menuItem("Build Your Own Pizza","Your choice of any 5 toppings.","$13.99"))
+        menu.add(menuItem("Chicken Tikka Pizza","Fresh tandoori chicken with green pepper, red onion and special mint sauce.","$14.99"))
+        menu.add(menuItem("Veggie Delight Pizza","Mushrooms, green peppers, black olives, fresh sliced tomatoes, onions, jalapeno hot peppers, and double cheese.","$12.99"))
+        menu.add(menuItem("Steak on Pizza","We blend mozzarella cheese with Philly beef steak, onions, green peppers, mushrooms, and double cheese.","$12.99"))
+        menu.add(menuItem("Buffalo Chicken Cheese Steak","Meat: 8'' sub 8 oz. , 12'' Sub 12 oz.","$6.99"))
+        menu.add(menuItem("SPAGHETTI WITH TOMATO SAUCE","Add meatballs, mushrooms, chicken parmesan, sausage parmesan, meat sauce, or any other fresh pizza toppings for only $1.25.","$7.99"))
+        menu.add(menuItem("BAKED ZITI","BAKED ZITI pasta","$7.99"))
+        menu.add(menuItem("Coke","BEVERAGES","$0.99"))
+        menu.add(menuItem("Sprite","BEVERAGES","$0.99"))
+
 
 //        getmenu()
     }

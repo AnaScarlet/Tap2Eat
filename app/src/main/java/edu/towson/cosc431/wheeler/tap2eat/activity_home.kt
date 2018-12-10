@@ -42,7 +42,7 @@ class activity_home : AppCompatActivity(), IHasActionBar {
         if(categoryList.isEmpty()){
 
             categoryList.add(category(3,"Pizza",R.drawable.pizza_cat))
-            categoryList.add(category(4,"Sandwitch",R.drawable.subs_cat))
+            categoryList.add(category(4,"Sandwich",R.drawable.subs_cat))
             categoryList.add(category(2,"Pasta",R.drawable.pasta_cat))
             categoryList.add(category(1,"Soda",R.drawable.soda_cat))
 
