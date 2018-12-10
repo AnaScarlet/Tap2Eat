@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.content.LocalBroadcastManager
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_menu.*
@@ -22,6 +23,7 @@ class activity_menu : AppCompatActivity(), IHasActionBar {
     //initialize firebase
     var db = FirebaseDatabase.getInstance()
     var itemList = db.getReference("menuItem")
+    lateinit var ref : DatabaseReference
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,25 +32,51 @@ class activity_menu : AppCompatActivity(), IHasActionBar {
 
         setSupportActionBar(my_toolbar)
 
-        // 1. instantiate the MenuAdapter
-        val menuAdapter = MenuItemAdapter(menu)
+//        ref = FirebaseDatabase.getInstance().getReference("menuItem")
+//
+//        // 2. set the LayoutManager on the recyclerview
+//        recyclerView.layoutManager = LinearLayoutManager(this)
+//
+//        ref.addValueEventListener(object : ValueEventListener{
+//            override fun onCancelled(p0: DatabaseError) {
+//                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+//            }
+//
+//            override fun onDataChange(p0: DataSnapshot) {
+//                if(p0!!.exists()){
+//
+//                    for(h in p0.children){
+//                        val recipe = h.getValue(menuItem::class.java)
+//                        menu.add(recipe!!)
+//                        Log.d("String",recipe.toString())
+//                    }
+//
+//                    // 1. instantiate the MenuAdapter
+//                    val menuAdapter = MenuItemAdapter(menu)
+//
+//
+//
+//                    // 3. set the adapter on the recyclerview
+//                    recyclerView.adapter = menuAdapter
+//
+//                }
+//            }
+//
+//        })
 
-        // 2. set the LayoutManager on the recyclerview
-        recyclerView.layoutManager = LinearLayoutManager(this)
-
-        // 3. set the adapter on the recyclerview
-        recyclerView.adapter = menuAdapter
 
 
-        menu.add(menuItem("Cheese Steak", "Steak, lettuce,\n" +
-                "tomatoes, mayo, mushrooms, green peppers,\n" +
-                "onions, hot peppers & provolone", "7.00"))
-        menu.add(menuItem("Beef Weelington", "Blah  Blah Blah","5.00" ))
-        menu.add(menuItem("Spaghetti & Meatballs", "Blah  Blah Blah","6.00"))
-        menu.add(menuItem("Other Random Foods", "Blah  Blah Blah","7.00"))
-        menu.add(menuItem("Cheesecake", "Blah  Blah Blah","5.00"))
+//        menu.add(menuItem("Cheese Steak", "Steak, lettuce,\n" +
+//                "tomatoes, mayo, mushrooms, green peppers,\n" +
+//                "onions, hot peppers & provolone", "7.00"))
+//        menu.add(menuItem("Beef Weelington", "Blah  Blah Blah","5.00" ))
+//        menu.add(menuItem("Spaghetti & Meatballs", "Blah  Blah Blah","6.00"))
+//        menu.add(menuItem("Other Random Foods", "Blah  Blah Blah","7.00"))
+//        menu.add(menuItem("Cheesecake", "Blah  Blah Blah","5.00"))
 
-//        getmenu()
+//        val string = getMenu()
+
+//        menu.add(menuItem("Beef Weelington", string,"5.00" )
     }
 
     override fun onResume() {
@@ -68,26 +96,19 @@ class activity_menu : AppCompatActivity(), IHasActionBar {
         super.onPause()
     }
 
-//    private fun getmenu() {
-//
-//
-//
-//        val messageListener = object : ValueEventListener {
-//
+//    private fun getMenu() : String {
+//        var post = ""
+//        val menuListener = object : ValueEventListener {
 //            override fun onDataChange(dataSnapshot: DataSnapshot) {
-//                if (dataSnapshot.exists()) {
-//                    val message = dataSnapshot.getValue(activity_menu::class.java)
-//                    // ...
-//                }
+//                post = dataSnapshot.child("menuItem").value.toString()
 //            }
 //
 //            override fun onCancelled(databaseError: DatabaseError) {
-//                // Failed to read value
+//                println("loadPost:onCancelled ${databaseError.toException()}")
 //            }
 //        }
-//
-//        itemList!!.addValueEventListener(messageListener)
-//
+//        val item = itemList.child("menuItem").addListenerForSingleValueEvent(menuListener)
+//        return post
 //    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
