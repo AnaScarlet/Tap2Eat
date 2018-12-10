@@ -18,7 +18,7 @@ class MenuItemAdapter(val menu: List<menuItem>) : RecyclerView.Adapter<MenuItemV
         val itemViewHolder = MenuItemViewHolder(view)
 
         itemViewHolder.itemView.setOnClickListener {
-            val menuItem = menuItem(it.menu_name.text.toString(),
+            val menuItem = menuItem(0,it.menu_name.text.toString(),
                     it.menu_description.text.toString(),
                     it.menu_price.text.toString()
             )
