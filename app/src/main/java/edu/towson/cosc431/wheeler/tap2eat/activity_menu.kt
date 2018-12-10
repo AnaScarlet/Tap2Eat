@@ -74,7 +74,7 @@ class activity_menu : AppCompatActivity(), IHasActionBar {
 //        menu.add(menuItem("Other Random Foods", "Blah  Blah Blah","7.00"))
 //        menu.add(menuItem("Cheesecake", "Blah  Blah Blah","5.00"))
 
-<<<<<<< HEAD
+
         menu.add(menuItem("Build Your Own Pizza","Your choice of any 5 toppings.","$13.99"))
         menu.add(menuItem("Chicken Tikka Pizza","Fresh tandoori chicken with green pepper, red onion and special mint sauce.","$14.99"))
         menu.add(menuItem("Veggie Delight Pizza","Mushrooms, green peppers, black olives, fresh sliced tomatoes, onions, jalapeno hot peppers, and double cheese.","$12.99"))
@@ -85,9 +85,9 @@ class activity_menu : AppCompatActivity(), IHasActionBar {
         menu.add(menuItem("Coke","BEVERAGES","$0.99"))
         menu.add(menuItem("Sprite","BEVERAGES","$0.99"))
 
-=======
+
 //        val string = getMenu()
->>>>>>> 2ae475ca1d1e34dd39c66b17bcec75c705f8120a
+
 
 //        menu.add(menuItem("Beef Weelington", string,"5.00" )
     }
