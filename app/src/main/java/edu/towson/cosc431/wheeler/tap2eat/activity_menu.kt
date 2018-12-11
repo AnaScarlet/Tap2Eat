@@ -33,9 +33,15 @@ class activity_menu : AppCompatActivity(), IHasActionBar {
         setSupportActionBar(my_toolbar)
 
 //        ref = FirebaseDatabase.getInstance().getReference("menuItem")
-//
-//        // 2. set the LayoutManager on the recyclerview
-//        recyclerView.layoutManager = LinearLayoutManager(this)
+//         1. instantiate the MenuAdapter
+        val menuAdapter = MenuItemAdapter(menu)
+
+        // 2. set the LayoutManager on the recyclerview
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        // 3. set the adapter on the recyclerview
+        recyclerView.adapter = menuAdapter
+
 //
 //        ref.addValueEventListener(object : ValueEventListener{
 //            override fun onCancelled(p0: DatabaseError) {
@@ -51,13 +57,7 @@ class activity_menu : AppCompatActivity(), IHasActionBar {
 //                        Log.d("String",recipe.toString())
 //                    }
 //
-//                    // 1. instantiate the MenuAdapter
-//                    val menuAdapter = MenuItemAdapter(menu)
-//
-//
-//
-//                    // 3. set the adapter on the recyclerview
-//                    recyclerView.adapter = menuAdapter
+//                    /
 //
 //                }
 //            }
